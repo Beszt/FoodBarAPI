@@ -1,0 +1,6 @@
+@FoodBarAPI_HostAddress = http://localhost:5164
+
+GET {{FoodBarAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
