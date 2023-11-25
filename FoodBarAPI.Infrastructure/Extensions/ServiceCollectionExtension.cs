@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FoodBarAPI.Infrastructure.Persistence;
+using FoodBarAPI.Infrastructure.Seeders;
 
 namespace FoodBarAPI.Infrastructure.Extensions;
 
@@ -12,5 +13,7 @@ public static class ServiceCollectionExtension
         services.AddDbContext<ProductDbContext>(options => options.UseNpgsql(
             configuration.GetConnectionString("FoodBarAPI")
         ));
+
+        services.AddScoped<ProductSeeder>();
     }
 }
