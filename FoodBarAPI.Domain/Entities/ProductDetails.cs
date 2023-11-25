@@ -9,8 +9,8 @@ public class ProductDetails
     public double Fat { get; set; }
     public double Carbohydrates { get; set; }
     public double? Sugar { get; set; }
-    public double? Fiber { get; set; }
     public double? Salt { get; set; }
+    public double? Fiber { get; set; }
 
     public int ProductId { get; set; }
     public Product Product { get; set; } = default!;
