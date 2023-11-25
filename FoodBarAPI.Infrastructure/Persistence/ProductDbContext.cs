@@ -16,6 +16,10 @@ public class ProductDbContext(DbContextOptions<ProductDbContext> options) : DbCo
             .HasOne(c => c.ProductDetails)
             .WithOne(c => c.Product);
 
+        modelBuilder.Entity<Product>()
+            .HasIndex(c => c.Barcode)
+            .IsUnique();
+
         modelBuilder.Entity<ProductDetails>()
             .HasOne(c => c.Product)
             .WithOne(c => c.ProductDetails)
