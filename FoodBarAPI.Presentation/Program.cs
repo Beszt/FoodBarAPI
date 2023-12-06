@@ -1,7 +1,17 @@
+using NLog;
+using NLog.Web;
 using FoodBarAPI.Infrastructure.Extensions;
 using FoodBarAPI.Infrastructure.Seeders;
 
+var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+logger.Info("Starting up...");
+
+try
+{
 var builder = WebApplication.CreateBuilder(args);
+
+// Add NLog to ASP.NET Core
+builder.Host.UseNLog();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -28,3 +38,15 @@ app.UseRouting();
 app.MapDefaultControllerRoute();
 
 app.Run();
+}
+catch (Exception exception)
+{
+    // NLog: catch setup errors
+    logger.Error(exception, "Stopped program because of exception");
+    throw;
+}
+finally
+{
+    // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
+    NLog.LogManager.Shutdown();
+}
