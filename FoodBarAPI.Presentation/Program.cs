@@ -1,5 +1,6 @@
 using NLog;
 using NLog.Web;
+using FoodBarAPI.Application.Extensions;
 using FoodBarAPI.Infrastructure.Extensions;
 using FoodBarAPI.Infrastructure.Seeders;
 
@@ -14,6 +15,7 @@ builder.Host.UseNLog();
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();

@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FoodBarAPI.Infrastructure.Persistence;
 using FoodBarAPI.Infrastructure.Seeders;
+using FoodBarAPI.Domain.Interfaces;
+using FoodBarAPI.Infrastructure.Repositories;
 
 namespace FoodBarAPI.Infrastructure.Extensions;
 
@@ -15,5 +17,7 @@ public static class ServiceCollectionExtension
         ));
 
         services.AddScoped<ProductSeeder>();
+
+        services.AddScoped<IProductRepository, ProductRepository>();
     }
 }
