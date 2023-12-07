@@ -12,7 +12,7 @@ public class ProductSeeder(ProductDbContext _dbContext)
             var products = new List<Product>
             {
                 new() {
-                    Barcode = "4056489301806",
+                    Barcode = 4056489301806,
                     Name = "Twaróg Wędzony z Wielkopolski",
                     Description = "Twaróg zajebisty - wpierdalaj!",
                     ProductDetails = new()
@@ -28,7 +28,7 @@ public class ProductSeeder(ProductDbContext _dbContext)
                     }
                 },
                 new() {
-                    Barcode = "4056489282631",
+                    Barcode = 4056489282631,
                     Name = "Polędwica z piersi kurczaka",
                     Description = "Dobra szynka, polecam!",
                     ProductDetails = new()

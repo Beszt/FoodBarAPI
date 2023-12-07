@@ -3,7 +3,7 @@ namespace FoodBarAPI.Domain.Entities;
 public class Product
 {
     public int Id { get; set; }
-    public string Barcode { get; set; } = default!;
+    public long Barcode { get; set; } = default!;
     public string Name { get; set; } = default!;
     public string? Description { get; set; }
     public byte[]? Image { get; set; }

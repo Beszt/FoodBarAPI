@@ -18,7 +18,7 @@ namespace FoodBarAPI.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Barcode = table.Column<string>(type: "text", nullable: false),
+                    Barcode = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
                     Image = table.Column<byte[]>(type: "bytea", nullable: true),
@@ -42,8 +42,8 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     Fat = table.Column<double>(type: "double precision", nullable: false),
                     Carbohydrates = table.Column<double>(type: "double precision", nullable: false),
                     Sugar = table.Column<double>(type: "double precision", nullable: true),
-                    Fiber = table.Column<double>(type: "double precision", nullable: true),
                     Salt = table.Column<double>(type: "double precision", nullable: true),
+                    Fiber = table.Column<double>(type: "double precision", nullable: true),
                     ProductId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -56,6 +56,12 @@ namespace FoodBarAPI.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_Barcode",
+                table: "Products",
+                column: "Barcode",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductsDetails_ProductId",
