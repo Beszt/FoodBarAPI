@@ -33,6 +33,9 @@ namespace FoodBarAPI.Controllers
         public async Task<IActionResult> Get(long barcode)
         {
             var product = await _mediator.Send(new GetProductQuery(barcode));
+
+            if (product == null)
+                return NotFound();
                 
             return Ok(product);
         }
