@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using FoodBarAPI.Infrastructure.Persistence;
-using FoodBarAPI.Infrastructure.Seeders;
 using FoodBarAPI.Domain.Interfaces;
+using FoodBarAPI.Infrastructure.Persistence;
 using FoodBarAPI.Infrastructure.Repositories;
+using FoodBarAPI.Infrastructure.Seeders;
 
 namespace FoodBarAPI.Infrastructure.Extensions;
 

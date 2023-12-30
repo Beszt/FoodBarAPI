@@ -1,5 +1,5 @@
-using FoodBarAPI.Application.Dtos;
 using MediatR;
+using FoodBarAPI.Application.Dtos;
 
 namespace FoodBarAPI.Application.Queries;
 

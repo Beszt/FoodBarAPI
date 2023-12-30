@@ -1,9 +1,7 @@
-using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using FoodBarAPI.Application.Commands;
 using FoodBarAPI.Application.Queries;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace FoodBarAPI.Controllers
 {

@@ -1,5 +1,6 @@
 using MediatR;
 using FoodBarAPI.Domain.Interfaces;
+
 namespace FoodBarAPI.Application.Commands;
 
 public class DeleteProductCommandHandler(IProductRepository _productRepository) : IRequestHandler<DeleteProductCommand>

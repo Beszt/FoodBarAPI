@@ -1,7 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using FoodBarAPI.Domain.Entities;
 using FoodBarAPI.Domain.Interfaces;
 using FoodBarAPI.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodBarAPI.Infrastructure.Repositories;
 

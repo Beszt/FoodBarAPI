@@ -2,6 +2,7 @@ using AutoMapper;
 using MediatR;
 using FoodBarAPI.Domain.Entities;
 using FoodBarAPI.Domain.Interfaces;
+
 namespace FoodBarAPI.Application.Commands;
 
 public class UpdateProductCommandHandler(IProductRepository _productRepository, IMapper _mapper) : IRequestHandler<UpdateProductCommand>
