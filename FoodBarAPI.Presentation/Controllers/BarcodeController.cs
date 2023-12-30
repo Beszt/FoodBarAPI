@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using FoodBarAPI.Application.Commands;
 using FoodBarAPI.Application.Queries;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace FoodBarAPI.Controllers
 {
-    public class BarcodeController(IValidator<CreateProductCommand> _validator, IMediator _mediator) : Controller
+    public class BarcodeController(IServiceProvider _servicesCollection, IMediator _mediator) : Controller
     {
         [HttpGet("/barcode")]
         public IActionResult Index()
@@ -17,8 +18,9 @@ namespace FoodBarAPI.Controllers
         [HttpPost("/barcode")]
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
         {
+            var validator = _servicesCollection.GetRequiredService<CreateProductCommandValidator>();
+            var result = await validator.ValidateAsync(command);
 
-            var result = await _validator.ValidateAsync(command);
             if (!result.IsValid)
                 return BadRequest(result.Errors);
 
@@ -43,10 +45,18 @@ namespace FoodBarAPI.Controllers
             return Ok();
         }
 
-        [HttpDelete("/barcode/{code}")]
-        public async Task<IActionResult> Delete(long code)
+        [HttpDelete("/barcode/{barcode}")]
+        public async Task<IActionResult> Delete(long barcode)
         {
-            await _mediator.Send(new DeleteProductCommand(code));
+            var command = new DeleteProductCommand(barcode);
+
+            var validator = _servicesCollection.GetRequiredService<DeleteProductCommandValidator>();
+            var result = await validator.ValidateAsync(command);
+
+            if (!result.IsValid)
+                return BadRequest(result.Errors);
+
+            await _mediator.Send(command);
 
             return Ok();
         }
