@@ -24,7 +24,7 @@ namespace FoodBarAPI.Controllers
 
             await _mediator.Send(command);
 
-            return Ok();
+            return Created();
         }
 
         [HttpGet("/barcode/{barcode}")]
