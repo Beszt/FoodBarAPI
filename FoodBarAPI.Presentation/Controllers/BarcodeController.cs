@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using FoodBarAPI.Application.Commands;
@@ -5,7 +6,7 @@ using FoodBarAPI.Application.Queries;
 
 namespace FoodBarAPI.Controllers
 {
-    public class BarcodeController(IMediator _mediator) : Controller
+    public class BarcodeController(IValidator<CreateProductCommand> _validator, IMediator _mediator) : Controller
     {
         [HttpGet("/barcode")]
         public IActionResult Index()
@@ -16,6 +17,11 @@ namespace FoodBarAPI.Controllers
         [HttpPost("/barcode")]
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
         {
+
+            var result = await _validator.ValidateAsync(command);
+            if (!result.IsValid)
+                return BadRequest(result.Errors);
+
             await _mediator.Send(command);
 
             return Ok();
@@ -25,7 +31,7 @@ namespace FoodBarAPI.Controllers
         public async Task<IActionResult> Get(long code)
         {
             var product = await _mediator.Send(new GetProductQuery(code));
-
+                
             return Ok(product);
         }
 
