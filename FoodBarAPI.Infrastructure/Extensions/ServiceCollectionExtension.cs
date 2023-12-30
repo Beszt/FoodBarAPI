@@ -17,7 +17,6 @@ public static class ServiceCollectionExtension
         ));
 
         services.AddScoped<ProductSeeder>();
-
         services.AddScoped<IProductRepository, ProductRepository>();
     }
 }
