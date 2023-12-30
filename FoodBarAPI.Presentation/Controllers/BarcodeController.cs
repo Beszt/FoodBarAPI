@@ -29,10 +29,10 @@ namespace FoodBarAPI.Controllers
             return Ok();
         }
 
-        [HttpGet("/barcode/{code}")]
-        public async Task<IActionResult> Get(long code)
+        [HttpGet("/barcode/{barcode}")]
+        public async Task<IActionResult> Get(long barcode)
         {
-            var product = await _mediator.Send(new GetProductQuery(code));
+            var product = await _mediator.Send(new GetProductQuery(barcode));
                 
             return Ok(product);
         }
@@ -40,6 +40,12 @@ namespace FoodBarAPI.Controllers
         [HttpPut("/barcode")]
         public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
         {
+            var validator = _servicesCollection.GetRequiredService<UpdateProductCommandValidator>();
+            var result = await validator.ValidateAsync(command);
+
+            if (!result.IsValid)
+                return BadRequest(result.Errors);
+
             await _mediator.Send(command);
 
             return Ok();
