@@ -9,7 +9,7 @@ public class GetProductQueryHandler(IProductRepository _productRepository, IMapp
 {
     public async Task<ProductDto> Handle(GetProductQuery request, CancellationToken cancellationToken)
     {
-        var product = await _productRepository.Get(request.Code);
+        var product = await _productRepository.Get(request.Barcode);
         var dto = _mapper.Map<ProductDto>(product);
         
         return dto;

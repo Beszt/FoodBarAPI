@@ -3,7 +3,7 @@ using MediatR;
 
 namespace FoodBarAPI.Application.Queries;
 
-public class GetProductQuery(long code) : IRequest<ProductDto>
+public class GetProductQuery(long barcode) : IRequest<ProductDto>
 {
-    public long Code { get; set; } = code;
+    public long Barcode { get; set; } = barcode;
 }
