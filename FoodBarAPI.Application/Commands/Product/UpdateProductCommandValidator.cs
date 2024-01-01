@@ -5,7 +5,7 @@ namespace FoodBarAPI.Application.Commands;
 
 public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
 {
-    public UpdateProductCommandValidator(IProductRepository repository)
+    public UpdateProductCommandValidator(IFoodBarRepository repository)
     {
         RuleFor(p => p.Barcode)
             .Custom((value, context) =>

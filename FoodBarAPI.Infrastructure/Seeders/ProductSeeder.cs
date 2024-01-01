@@ -3,7 +3,7 @@ using FoodBarAPI.Infrastructure.Persistence;
 
 namespace FoodBarAPI.Infrastructure.Seeders;
 
-public class ProductSeeder(ProductDbContext _dbContext)
+public class ProductSeeder(FoodBarDbContext _dbContext) : ISeeder
 {
     public async Task Seed()
     {

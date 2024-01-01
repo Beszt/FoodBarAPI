@@ -12,11 +12,13 @@ public static class ServiceCollectionExtension
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ProductDbContext>(options => options.UseNpgsql(
+        services.AddDbContext<FoodBarDbContext>(options => options.UseNpgsql(
             configuration.GetConnectionString("FoodBarAPI")
         ));
 
         services.AddScoped<ProductSeeder>();
-        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<UserSeeder>();
+        services.AddScoped<IPopulator, Populator>();
+        services.AddScoped<IFoodBarRepository, FoodBarRepository>();
     }
 }

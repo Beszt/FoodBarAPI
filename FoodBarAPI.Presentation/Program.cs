@@ -22,8 +22,8 @@ var app = builder.Build();
 
 // Populate database with seed data.
 var scope = app.Services.CreateScope();
-var seeder = scope.ServiceProvider.GetRequiredService<ProductSeeder>();
-await seeder.Seed();
+var populator = scope.ServiceProvider.GetRequiredService<IPopulator>();
+await populator.Populate();
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
