@@ -5,7 +5,7 @@ namespace FoodBarAPI.Application.Commands;
 
 public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
 {
-    public DeleteProductCommandValidator(IFoodBarRepository repository)
+    public DeleteProductCommandValidator(IProductRepository repository)
     {
         RuleFor(p => p.Barcode)
             .Custom((value, context) =>

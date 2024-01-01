@@ -5,7 +5,7 @@ namespace FoodBarAPI.Application.Commands;
 
 public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
 {
-    public CreateProductCommandValidator(IFoodBarRepository repository)
+    public CreateProductCommandValidator(IProductRepository repository)
     {
         RuleFor(p => p.Barcode)
             .NotEmpty()

@@ -19,6 +19,6 @@ public static class ServiceCollectionExtension
         services.AddScoped<ProductSeeder>();
         services.AddScoped<UserSeeder>();
         services.AddScoped<IPopulator, Populator>();
-        services.AddScoped<IFoodBarRepository, FoodBarRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
     }
 }

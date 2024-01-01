@@ -5,7 +5,7 @@ using FoodBarAPI.Infrastructure.Persistence;
 
 namespace FoodBarAPI.Infrastructure.Repositories;
 
-public class FoodBarRepository(FoodBarDbContext _dbContext) : IFoodBarRepository
+public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
 {
     public async Task Create(Product product)
     {

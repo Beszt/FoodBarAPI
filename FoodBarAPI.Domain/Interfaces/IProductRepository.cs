@@ -2,7 +2,7 @@ using FoodBarAPI.Domain.Entities;
 
 namespace FoodBarAPI.Domain.Interfaces;
 
-public interface IFoodBarRepository
+public interface IProductRepository
 {
     Task Create(Product product);
     Task<Product?> Get(long barcode);
