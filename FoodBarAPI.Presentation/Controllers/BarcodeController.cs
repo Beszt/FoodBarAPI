@@ -2,17 +2,21 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using FoodBarAPI.Application.Commands;
 using FoodBarAPI.Application.Queries;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FoodBarAPI.Controllers
 {
+    [Authorize]
     public class BarcodeController(IServiceProvider _servicesCollection, IMediator _mediator) : Controller
     {
+        [AllowAnonymous]
         [HttpGet("/barcode")]
         public IActionResult Index()
         {
             return BadRequest();
         }
 
+        [Authorize(Roles = "admin, user")]
         [HttpPost("/barcode")]
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
         {
@@ -24,9 +28,10 @@ namespace FoodBarAPI.Controllers
 
             await _mediator.Send(command);
 
-            return Created();
+            return StatusCode(201); // Created() gives 204 - Bug?
         }
 
+        [Authorize(Roles = "admin, user")]
         [HttpGet("/barcode/{barcode}")]
         public async Task<IActionResult> Get(long barcode)
         {
@@ -38,6 +43,7 @@ namespace FoodBarAPI.Controllers
             return Ok(product);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("/barcode")]
         public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
         {
@@ -52,6 +58,7 @@ namespace FoodBarAPI.Controllers
             return Ok();
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("/barcode/{barcode}")]
         public async Task<IActionResult> Delete(long barcode)
         {

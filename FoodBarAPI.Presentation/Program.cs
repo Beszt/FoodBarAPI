@@ -3,6 +3,7 @@ using NLog.Web;
 using FoodBarAPI.Application.Extensions;
 using FoodBarAPI.Infrastructure.Extensions;
 using FoodBarAPI.Infrastructure.Seeders;
+using FoodBarAPI.Presentation.Settings;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Info("Starting up...");
@@ -17,6 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddJwt(builder.Configuration);
 
 var app = builder.Build();
 
@@ -24,6 +26,8 @@ var app = builder.Build();
 var scope = app.Services.CreateScope();
 var populator = scope.ServiceProvider.GetRequiredService<IPopulator>();
 await populator.Populate();
+
+app.UseAuthentication();
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
@@ -35,6 +39,7 @@ app.UseSwaggerUI(c =>
 });
 
 app.UseRouting();
+app.UseAuthorization();
 app.MapDefaultControllerRoute();
 
 app.Run();
