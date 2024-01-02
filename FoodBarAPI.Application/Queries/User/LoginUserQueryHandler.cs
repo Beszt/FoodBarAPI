@@ -1,11 +1,11 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using MediatR;
 using FoodBarAPI.Domain.Interfaces;
 using FoodBarAPI.Domain.Entities;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace FoodBarAPI.Application.Queries;
 

@@ -3,7 +3,6 @@ using NLog.Web;
 using FoodBarAPI.Application.Extensions;
 using FoodBarAPI.Infrastructure.Extensions;
 using FoodBarAPI.Infrastructure.Seeders;
-using FoodBarAPI.Presentation.Settings;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Info("Starting up...");
