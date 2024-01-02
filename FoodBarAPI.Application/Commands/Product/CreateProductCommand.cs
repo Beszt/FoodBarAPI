@@ -5,5 +5,5 @@ namespace FoodBarAPI.Application.Commands;
 
 public class CreateProductCommand : ProductDto, IRequest
 {
-    public int CreatedByUserId {get; set; }
+    public int UserId {get; set; }
 }
