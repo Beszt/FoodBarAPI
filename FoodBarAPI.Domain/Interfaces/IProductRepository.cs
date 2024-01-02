@@ -8,4 +8,6 @@ public interface IProductRepository
     Task<Product?> Get(long barcode);
     Task Update(Product product);
     Task Delete(long barcode);
+
+    bool Exists(long barcode);
 }

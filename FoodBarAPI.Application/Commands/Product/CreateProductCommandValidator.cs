@@ -13,8 +13,7 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
             .LessThan(100000000000000)
             .Custom((value, context) =>
             {
-                var product = repository.Get(value).Result;
-                if (product != null)
+                if (repository.Exists(value))
                     context.AddFailure("Product exists!");
             });
 

@@ -54,4 +54,7 @@ public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
 
         await _dbContext.SaveChangesAsync();
     }
+
+    public bool Exists(long barcode) =>
+        _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode) != null;
 }

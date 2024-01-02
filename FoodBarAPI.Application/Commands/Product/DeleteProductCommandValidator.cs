@@ -10,8 +10,7 @@ public class DeleteProductCommandValidator : AbstractValidator<DeleteProductComm
         RuleFor(p => p.Barcode)
             .Custom((value, context) =>
             {
-                var product = repository.Get(value).Result;
-                if (product == null)
+                if (!repository.Exists(value))
                     context.AddFailure("Product not exists!");
             });
     }
