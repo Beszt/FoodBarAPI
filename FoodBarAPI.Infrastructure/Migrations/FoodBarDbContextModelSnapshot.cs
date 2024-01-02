@@ -36,7 +36,7 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("CreatedByUserId")
+                    b.Property<int>("CreatedBy")
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
@@ -52,12 +52,15 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Barcode")
                         .IsUnique();
 
-                    b.HasIndex("CreatedByUserId");
+                    b.HasIndex("CreatedBy");
 
                     b.ToTable("Products");
                 });
@@ -161,7 +164,7 @@ namespace FoodBarAPI.Infrastructure.Migrations
                 {
                     b.HasOne("FoodBarAPI.Domain.Entities.User", "User")
                         .WithMany("Product")
-                        .HasForeignKey("CreatedByUserId")
+                        .HasForeignKey("CreatedBy")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

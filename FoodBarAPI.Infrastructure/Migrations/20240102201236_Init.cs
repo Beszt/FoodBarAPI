@@ -58,16 +58,17 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
                     Image = table.Column<byte[]>(type: "bytea", nullable: true),
-                    CreatedByUserId = table.Column<int>(type: "integer", nullable: false),
+                    CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedBy = table.Column<int>(type: "integer", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Users_CreatedByUserId",
-                        column: x => x.CreatedByUserId,
+                        name: "FK_Products_Users_CreatedBy",
+                        column: x => x.CreatedBy,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -107,9 +108,9 @@ namespace FoodBarAPI.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CreatedByUserId",
+                name: "IX_Products_CreatedBy",
                 table: "Products",
-                column: "CreatedByUserId");
+                column: "CreatedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductsDetails_ProductId",

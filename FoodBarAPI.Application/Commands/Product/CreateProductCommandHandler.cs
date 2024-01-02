@@ -11,7 +11,7 @@ public class CreateProductCommandHandler(IProductRepository _productRepository, 
     {
         var product = _mapper.Map<Product>(request);
 
-        product.CreatedByUserId = request.UserId;
+        product.CreatedBy = request.UserId;
 
         await _productRepository.Create(product);
     }

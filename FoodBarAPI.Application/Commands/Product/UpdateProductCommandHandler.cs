@@ -10,6 +10,7 @@ public class UpdateProductCommandHandler(IProductRepository _productRepository, 
     async Task IRequestHandler<UpdateProductCommand>.Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
         var product = _mapper.Map<Product>(request);
+        product.UpdatedBy = request.UserId;
 
         await _productRepository.Update(product);
     }

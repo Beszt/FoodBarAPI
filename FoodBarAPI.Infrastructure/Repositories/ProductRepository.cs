@@ -46,6 +46,7 @@ public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
             prod.Description = product.Description;
             prod.Image = product.Image;
             prod.UpdatedAt = DateTime.UtcNow;
+            prod.UpdatedBy = product.UpdatedBy;
 
             var prodDet = _dbContext.ProductsDetails.FirstOrDefault(pd => pd.ProductId == prod.Id);
             if (prodDet != null)
@@ -59,5 +60,5 @@ public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
         _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode) != null;
 
     public bool WasCreatedBy(long barcode, int userId) =>
-        _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode)!.CreatedByUserId == userId;
+        _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode)!.CreatedBy == userId;
 }

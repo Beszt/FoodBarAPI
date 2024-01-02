@@ -15,7 +15,7 @@ public class ProductSeeder(FoodBarDbContext _dbContext) : ISeeder
                     Barcode = 4056489301806,
                     Name = "Twaróg Wędzony z Wielkopolski",
                     Description = "Twaróg zajebisty - wpierdalaj!",
-                    CreatedByUserId = 1,
+                    CreatedBy = 1,
                     ProductDetails = new()
                     {
                         Weight = 275,
@@ -32,7 +32,7 @@ public class ProductSeeder(FoodBarDbContext _dbContext) : ISeeder
                     Barcode = 4056489282631,
                     Name = "Polędwica z piersi kurczaka",
                     Description = "Dobra szynka, polecam!",
-                    CreatedByUserId = 1,
+                    CreatedBy = 1,
                     ProductDetails = new()
                     {
                         Weight = 250,
