@@ -3,10 +3,7 @@ using FoodBarAPI.Application.Dtos;
 
 namespace FoodBarAPI.Application.Commands;
 
-public class DeleteProductCommand : ProductDto, IRequest
+public class DeleteProductCommand(long _barcode) : IRequest
 {
-    public DeleteProductCommand(long barcode)
-    {
-        Barcode = barcode;
-    }
+    public long Barcode {get; set; } = _barcode;
 }
