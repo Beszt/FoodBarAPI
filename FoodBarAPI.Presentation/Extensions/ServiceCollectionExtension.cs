@@ -6,7 +6,7 @@ namespace FoodBarAPI.Application.Extensions;
 
 public static class ServiceCollectionExtension
 {
-    public static void AddJwt(this IServiceCollection services, IConfiguration configuration)
+    public static void AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
         var jwt = new JwtSettings();
         configuration.GetSection("Jwt").Bind(jwt);

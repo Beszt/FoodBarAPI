@@ -18,7 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddJwt(builder.Configuration);
+builder.Services.AddAuth(builder.Configuration);
 
 var app = builder.Build();
 
