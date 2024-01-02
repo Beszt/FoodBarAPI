@@ -1,9 +1,9 @@
 using MediatR;
-using FoodBarAPI.Application.Dtos;
 
 namespace FoodBarAPI.Application.Commands;
 
-public class DeleteProductCommand(long _barcode) : IRequest
+public class DeleteProductCommand() : IRequest
 {
-    public long Barcode {get; set; } = _barcode;
+    public long Barcode {get; set; }
+    public int UserId {get; set; }
 }

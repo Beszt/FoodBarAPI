@@ -57,4 +57,7 @@ public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
 
     public bool Exists(long barcode) =>
         _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode) != null;
+
+    public bool WasCreatedBy(long barcode, int userId) =>
+        _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode)!.CreatedByUserId == userId;
 }

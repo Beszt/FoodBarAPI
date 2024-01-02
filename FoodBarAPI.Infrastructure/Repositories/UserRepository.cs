@@ -19,4 +19,12 @@ public class UserRepository(FoodBarDbContext _dbContext) : IUserRepository
  
         return user;
     }
+
+    public bool HasAdminRole(int id)
+    {
+        var userRoleId = _dbContext.Users.FirstOrDefault(u => u.Id == id)!.RoleId;
+        var adminRoleId = _dbContext.Roles.FirstOrDefault(r => r.Name == "admin")!.Id;
+
+        return userRoleId == adminRoleId;
+    }
 }

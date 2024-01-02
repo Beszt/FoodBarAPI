@@ -14,27 +14,25 @@ namespace FoodBarAPI.Controllers
         [HttpGet("/barcode")]
         public IActionResult Index()
         {
-            return BadRequest();
+            return BadRequest("There are no index Bro");
         }
 
-        [Authorize(Roles = "admin, user")]
         [HttpPost("/barcode")]
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
         {
+            command.UserId = int.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
+
             var validator = _servicesCollection.GetRequiredService<CreateProductCommandValidator>();
             var result = await validator.ValidateAsync(command);
 
             if (!result.IsValid)
                 return BadRequest(result.Errors);
 
-            command.UserId = int.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
-
             await _mediator.Send(command);
 
             return StatusCode(201); // Created() gives 204 - Bug?
         }
 
-        [Authorize(Roles = "admin, user")]
         [HttpGet("/barcode/{barcode}")]
         public async Task<IActionResult> Get(long barcode)
         {
@@ -46,10 +44,11 @@ namespace FoodBarAPI.Controllers
             return Ok(product);
         }
 
-        [Authorize(Roles = "admin")]
         [HttpPut("/barcode")]
         public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
         {
+            command.UserId = int.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            
             var validator = _servicesCollection.GetRequiredService<UpdateProductCommandValidator>();
             var result = await validator.ValidateAsync(command);
 
@@ -61,11 +60,14 @@ namespace FoodBarAPI.Controllers
             return Ok();
         }
 
-        [Authorize(Roles = "admin")]
         [HttpDelete("/barcode/{barcode}")]
         public async Task<IActionResult> Delete(long barcode)
         {
-            var command = new DeleteProductCommand(barcode);
+            var command = new DeleteProductCommand()
+            {
+                Barcode = barcode,
+                UserId = int.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value)
+            };
 
             var validator = _servicesCollection.GetRequiredService<DeleteProductCommandValidator>();
             var result = await validator.ValidateAsync(command);

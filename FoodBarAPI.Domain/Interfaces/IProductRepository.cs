@@ -10,4 +10,5 @@ public interface IProductRepository
     Task Delete(long barcode);
 
     bool Exists(long barcode);
+    bool WasCreatedBy(long barcode, int userId);
 }

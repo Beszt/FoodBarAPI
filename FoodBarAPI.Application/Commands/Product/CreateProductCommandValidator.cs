@@ -5,7 +5,7 @@ namespace FoodBarAPI.Application.Commands;
 
 public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
 {
-    public CreateProductCommandValidator(IProductRepository repository)
+    public CreateProductCommandValidator(IProductRepository _products)
     {
         RuleFor(p => p.Barcode)
             .NotEmpty()
@@ -13,7 +13,7 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
             .LessThan(100000000000000)
             .Custom((value, context) =>
             {
-                if (repository.Exists(value))
+                if (_products.Exists(value))
                     context.AddFailure("Product exists!");
             });
 
