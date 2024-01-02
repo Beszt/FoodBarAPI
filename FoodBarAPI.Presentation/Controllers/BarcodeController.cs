@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using FoodBarAPI.Application.Commands;
@@ -25,6 +26,8 @@ namespace FoodBarAPI.Controllers
 
             if (!result.IsValid)
                 return BadRequest(result.Errors);
+
+            command.CreatedByUserId = int.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
 
             await _mediator.Send(command);
 

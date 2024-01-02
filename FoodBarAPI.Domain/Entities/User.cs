@@ -10,4 +10,5 @@ public class User
 
     public int RoleId {get; set; }
     public Role Role { get; set; } = default!;
+    public List<Product>? Product {get; set;} 
 }

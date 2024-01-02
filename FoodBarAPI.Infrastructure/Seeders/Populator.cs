@@ -4,7 +4,7 @@ public class Populator(ProductSeeder _productSeeder, UserSeeder _userSeeder) : I
 {
     public async Task Populate()
     {
-        await _productSeeder.Seed();
         await _userSeeder.Seed();
+        await _productSeeder.Seed();
     }
 }

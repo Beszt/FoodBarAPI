@@ -36,6 +36,9 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
@@ -53,6 +56,8 @@ namespace FoodBarAPI.Infrastructure.Migrations
 
                     b.HasIndex("Barcode")
                         .IsUnique();
+
+                    b.HasIndex("CreatedByUserId");
 
                     b.ToTable("Products");
                 });
@@ -152,6 +157,17 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("FoodBarAPI.Domain.Entities.Product", b =>
+                {
+                    b.HasOne("FoodBarAPI.Domain.Entities.User", "User")
+                        .WithMany("Product")
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("FoodBarAPI.Domain.Entities.ProductDetails", b =>
                 {
                     b.HasOne("FoodBarAPI.Domain.Entities.Product", "Product")
@@ -183,6 +199,11 @@ namespace FoodBarAPI.Infrastructure.Migrations
             modelBuilder.Entity("FoodBarAPI.Domain.Entities.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("FoodBarAPI.Domain.Entities.User", b =>
+                {
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

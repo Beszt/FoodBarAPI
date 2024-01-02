@@ -15,12 +15,17 @@ public class FoodBarDbContext(DbContextOptions<FoodBarDbContext> options) : DbCo
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<Product>()
+            .HasIndex(c => c.Barcode)
+            .IsUnique();
+
+        modelBuilder.Entity<Product>()
             .HasOne(c => c.ProductDetails)
             .WithOne(c => c.Product);
 
         modelBuilder.Entity<Product>()
-            .HasIndex(c => c.Barcode)
-            .IsUnique();
+            .HasOne(c => c.User)
+            .WithMany(c => c.Product)
+            .HasForeignKey(c => c.CreatedByUserId);
 
         modelBuilder.Entity<ProductDetails>()
             .HasOne(c => c.Product)
