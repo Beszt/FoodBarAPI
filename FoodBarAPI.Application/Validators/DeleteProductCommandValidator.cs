@@ -1,8 +1,8 @@
 using FluentValidation;
-using FoodBarAPI.Domain.Entities;
+using FoodBarAPI.Application.Commands;
 using FoodBarAPI.Domain.Interfaces;
 
-namespace FoodBarAPI.Application.Commands;
+namespace FoodBarAPI.Application.Validators;
 
 public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
 {

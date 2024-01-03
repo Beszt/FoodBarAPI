@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using FoodBarAPI.Application.Commands;
+using FoodBarAPI.Application.Validators;
 using FoodBarAPI.Application.Queries;
 using Microsoft.AspNetCore.Authorization;
 

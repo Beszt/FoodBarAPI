@@ -1,7 +1,8 @@
 using FluentValidation;
+using FoodBarAPI.Application.Commands;
 using FoodBarAPI.Domain.Interfaces;
 
-namespace FoodBarAPI.Application.Commands;
+namespace FoodBarAPI.Application.Validators;
 
 public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
 {
