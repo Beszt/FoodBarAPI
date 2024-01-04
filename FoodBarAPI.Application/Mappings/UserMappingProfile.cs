@@ -1,6 +1,7 @@
 using AutoMapper;
 using FoodBarAPI.Application.Dtos;
 using FoodBarAPI.Domain.Entities;
+using FoodBarAPI.Domain.Interfaces;
 
 namespace FoodBarAPI.Application.Mappings;
 
@@ -8,9 +9,10 @@ public class UserMappingProfile : Profile
 {
     public UserMappingProfile()
     {
-        CreateMap<User, LoginDto>()
-            .ForMember(dest => dest.Login, opt => opt.MapFrom(src => src.Login))
-            .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
-            .ReverseMap();
+        CreateMap<User, UserDto>();
+
+        CreateMap<UserDto, User>()
+            .ForMember(dest => dest.RoleId, opt => opt.Ignore())
+            .ForMember(dest => dest.Role, opt => opt.Ignore());
     }
 }

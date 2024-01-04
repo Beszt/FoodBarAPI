@@ -13,16 +13,6 @@ public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task Delete(long barcode)
-    {
-        var product = _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode);
-
-        if (product != null)
-            _dbContext.Remove(product);
-
-        await _dbContext.SaveChangesAsync();
-    }
-
     public async Task<Product?> Get(long barcode)
     {
         var product = await _dbContext.Products.FirstOrDefaultAsync(p => p.Barcode == barcode);
@@ -56,9 +46,26 @@ public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
         await _dbContext.SaveChangesAsync();
     }
 
+    public async Task Delete(long barcode)
+    {
+        var product = _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode);
+
+        if (product != null)
+            _dbContext.Remove(product);
+
+        await _dbContext.SaveChangesAsync();
+    }
+
     public bool Exists(long barcode) =>
         _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode) != null;
 
-    public bool WasCreatedBy(long barcode, int userId) =>
-        _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode)!.CreatedBy == userId;
+    public bool WasCreatedBy(long barcode, int userId)
+    {
+        var product = _dbContext.Products.FirstOrDefault(p => p.Barcode == barcode);
+
+        if (product != null)
+            return product.CreatedBy == userId;
+        else
+            return false;
+    }
 }

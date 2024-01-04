@@ -1,7 +1,8 @@
 namespace FoodBarAPI.Application.Dtos;
 
-public class LoginDto
+public class UserDto
 {
     public string Login { get; set; } = default!;
     public string Password { get; set; } = default!;
+    public string Role { get; set; } = default!;
 }

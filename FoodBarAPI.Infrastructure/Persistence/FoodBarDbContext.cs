@@ -33,17 +33,16 @@ public class FoodBarDbContext(DbContextOptions<FoodBarDbContext> options) : DbCo
             .HasForeignKey<ProductDetails>(c => c.ProductId);
 
         modelBuilder.Entity<User>()
+            .HasIndex(c => c.Login)
+            .IsUnique();
+
+        modelBuilder.Entity<User>()
             .HasOne(c => c.Role)
             .WithMany(c => c.Users)
             .HasForeignKey(c => c.RoleId);
 
-        modelBuilder.Entity<User>()
-            .HasIndex(c => c.Login)
-            .IsUnique();
-
         modelBuilder.Entity<Role>()
             .HasMany(c => c.Users)
-            .WithOne(c => c.Role)
-            .HasPrincipalKey(c => c.Id);
+            .WithOne(c => c.Role);
     }
 }

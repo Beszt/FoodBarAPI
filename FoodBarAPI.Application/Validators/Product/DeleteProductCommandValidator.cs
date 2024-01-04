@@ -9,6 +9,7 @@ public class DeleteProductCommandValidator : AbstractValidator<DeleteProductComm
     public DeleteProductCommandValidator(IProductRepository _products, IUserRepository _users)
     {
         RuleFor(p => p)
+            .NotEmpty()
             .Custom((value, context) =>
             {
                 if (!_products.Exists(value.Barcode))
