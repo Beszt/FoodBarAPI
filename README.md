@@ -11,6 +11,7 @@ WEB API with info about food products (like energy, composition etc.) determined
 - MediatR
 - FluentValidation
 - NLog
+- Swagger
 
 ## Database 
 - Entity Framework
