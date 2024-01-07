@@ -42,3 +42,5 @@ app.UseAuthorization();
 app.MapDefaultControllerRoute();
 
 app.Run();
+
+public partial class Program { }

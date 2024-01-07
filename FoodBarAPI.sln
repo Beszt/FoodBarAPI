@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodBarAPI.Presentation", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodBarAPI.Infrastructure", "FoodBarAPI.Infrastructure\FoodBarAPI.Infrastructure.csproj", "{3AF2CCA6-2CCA-4F45-967C-6AB7A14B867B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodBarAPI.Tests", "FoodBarAPI.Tests\FoodBarAPI.Tests.csproj", "{99934D1D-9C1D-48E6-B2E9-1726F53E18B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3AF2CCA6-2CCA-4F45-967C-6AB7A14B867B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AF2CCA6-2CCA-4F45-967C-6AB7A14B867B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AF2CCA6-2CCA-4F45-967C-6AB7A14B867B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99934D1D-9C1D-48E6-B2E9-1726F53E18B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99934D1D-9C1D-48E6-B2E9-1726F53E18B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99934D1D-9C1D-48E6-B2E9-1726F53E18B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99934D1D-9C1D-48E6-B2E9-1726F53E18B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
