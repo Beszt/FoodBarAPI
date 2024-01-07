@@ -1,7 +1,6 @@
 using AutoMapper;
 using FoodBarAPI.Application.Dtos;
 using FoodBarAPI.Domain.Entities;
-using FoodBarAPI.Domain.Interfaces;
 
 namespace FoodBarAPI.Application.Mappings;
 

@@ -2,11 +2,11 @@ using MediatR;
 
 namespace FoodBarAPI.Application.Queries;
 
-public class LoginUserQuery(string login, string password, string jwtKey, string jwtIssuer, int jwtExpire) : IRequest<string?>
+public class LoginUserQuery() : IRequest<string?>
 {
-    public string Login { get; set; } = login;
-    public string Password { get; set; } = password;
-    public string JwtKey { get; set; } = jwtKey;
-    public string JwtIssuer { get; set; } = jwtIssuer;
-    public int JwtExpire { get; set; } = jwtExpire;
+    public string Login { get; set; } = default!;
+    public string Password { get; set; } = default!;
+    public string JwtKey { get; set; } = default!;
+    public string JwtIssuer { get; set; } = default!;
+    public int JwtExpire { get; set; }
 }

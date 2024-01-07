@@ -17,7 +17,14 @@ public class UserController(IServiceProvider _servicesCollection, IMediator _med
     [HttpPost("/login")]
     public async Task<IActionResult> Login([FromBody] UserDto login)
     {
-        var jwt = await _mediator.Send(new LoginUserQuery(login.Login, login.Password, settings.Key, settings.Issuer, settings.ExpireInDays));
+        var jwt = await _mediator.Send(new LoginUserQuery
+        {
+            Login = login.Login,
+            Password = login.Password,
+            JwtKey = settings.Key,
+            JwtIssuer = settings.Issuer,
+            JwtExpire = settings.ExpireInDays
+        });
 
         if (jwt == null)
             return BadRequest("Wrong username or password!");
@@ -68,7 +75,7 @@ public class UserController(IServiceProvider _servicesCollection, IMediator _med
     [HttpDelete("/user/{login}")]
     public async Task<IActionResult> Delete(string login)
     {
-        var command = new DeleteUserCommand(login);
+        var command = new DeleteUserCommand{Login = login};
 
         var validator = _servicesCollection.GetRequiredService<DeleteUserCommandValidator>();
         var result = await validator.ValidateAsync(command);
