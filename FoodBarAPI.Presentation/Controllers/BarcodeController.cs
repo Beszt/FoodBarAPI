@@ -37,7 +37,7 @@ public class BarcodeController(IServiceProvider _servicesCollection, IMediator _
     [HttpGet("/barcode/{barcode}")]
     public async Task<IActionResult> Get(long barcode)
     {
-        var product = await _mediator.Send(new GetProductQuery(barcode));
+        var product = await _mediator.Send(new GetProductQuery{Barcode = barcode});
 
         if (product == null)
             return NotFound();

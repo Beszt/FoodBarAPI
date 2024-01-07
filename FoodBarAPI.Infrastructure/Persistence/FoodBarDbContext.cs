@@ -3,7 +3,7 @@ using FoodBarAPI.Domain.Entities;
 
 namespace FoodBarAPI.Infrastructure.Persistence;
 
-public class FoodBarDbContext(DbContextOptions<FoodBarDbContext> options) : DbContext(options)
+public class FoodBarDbContext(DbContextOptions<FoodBarDbContext> _options) : DbContext(_options)
 {
     public DbSet<Product> Products { get; set; } = default!;
     public DbSet<ProductDetails> ProductsDetails { get; set; } = default!;

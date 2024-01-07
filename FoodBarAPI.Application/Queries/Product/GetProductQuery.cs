@@ -3,7 +3,7 @@ using FoodBarAPI.Application.Dtos;
 
 namespace FoodBarAPI.Application.Queries;
 
-public class GetProductQuery(long barcode) : IRequest<ProductDto>
+public class GetProductQuery() : IRequest<ProductDto>
 {
-    public long Barcode { get; set; } = barcode;
+    public long Barcode { get; set; }
 }
