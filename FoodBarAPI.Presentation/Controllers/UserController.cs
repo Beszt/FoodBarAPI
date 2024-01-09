@@ -10,7 +10,7 @@ using FoodBarAPI.Presentation.Settings;
 namespace FoodBarAPI.Presentation.Controllers;
 
 [Authorize (Roles = "admin")]
-public class UserController(IServiceProvider _servicesCollection, IMediator _mediator, JwtSettings settings) : Controller
+public class UserController(IServiceProvider _servicesCollection, IMediator _mediator) : Controller
 {
     [HttpPost("/user")]
     public async Task<IActionResult> Create([FromBody] CreateUserCommand command)

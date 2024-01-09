@@ -6,7 +6,7 @@ using FoodBarAPI.Presentation.Settings;
 
 namespace FoodBarAPI.Presentation.Controllers;
 
-public class LoginController(IMediator _mediator, JwtSettings settings) : Controller
+public class LoginController(IMediator _mediator, JwtSettings _settings) : Controller
 {
     [HttpPost("/login")]
     public async Task<IActionResult> Login([FromBody] UserDto login)
@@ -18,9 +18,9 @@ public class LoginController(IMediator _mediator, JwtSettings settings) : Contro
         {
             Login = login.Login,
             Password = login.Password,
-            JwtKey = settings.Key,
-            JwtIssuer = settings.Issuer,
-            JwtExpire = settings.ExpireInDays
+            JwtKey = _settings.Key,
+            JwtIssuer = _settings.Issuer,
+            JwtExpire = _settings.ExpireInDays
         });
 
         if (jwt == null)
