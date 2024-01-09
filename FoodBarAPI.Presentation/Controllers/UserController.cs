@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using FoodBarAPI.Application.Commands;
-using FoodBarAPI.Application.Dtos;
 using FoodBarAPI.Application.Queries;
 using FoodBarAPI.Application.Validators;
 using FoodBarAPI.Presentation.Settings;
@@ -13,25 +12,6 @@ namespace FoodBarAPI.Presentation.Controllers;
 [Authorize (Roles = "admin")]
 public class UserController(IServiceProvider _servicesCollection, IMediator _mediator, JwtSettings settings) : Controller
 {
-    [AllowAnonymous]
-    [HttpPost("/login")]
-    public async Task<IActionResult> Login([FromBody] UserDto login)
-    {
-        var jwt = await _mediator.Send(new LoginUserQuery
-        {
-            Login = login.Login,
-            Password = login.Password,
-            JwtKey = settings.Key,
-            JwtIssuer = settings.Issuer,
-            JwtExpire = settings.ExpireInDays
-        });
-
-        if (jwt == null)
-            return BadRequest("Wrong username or password!");
-
-        return Ok(jwt);
-    }
-
     [HttpPost("/user")]
     public async Task<IActionResult> Create([FromBody] CreateUserCommand command)
     {
