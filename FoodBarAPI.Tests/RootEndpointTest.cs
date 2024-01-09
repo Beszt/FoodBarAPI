@@ -5,10 +5,10 @@ using Xunit;
 
 namespace FoodBarAPI.Tests;
 
-public class RootTest
+public class RootEndpointTest
 {
     [Fact]
-    public async Task Root()
+    public async Task HttpGet_ShouldReturnStatusCodeNotFound()
     {
         await using var application = new WebApplicationFactory<Program>();
         using var client = application.CreateClient();
