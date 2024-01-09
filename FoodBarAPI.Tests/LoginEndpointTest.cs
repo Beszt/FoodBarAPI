@@ -1,9 +1,6 @@
 using System.Net;
-using Microsoft.AspNetCore.Mvc.Testing;
 using FluentAssertions;
 using Xunit;
-using System.Text;
-using System.Net.Http.Headers;
 using FoodBarAPI.Tests.Tokens;
 
 namespace FoodBarAPI.Tests;
