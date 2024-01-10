@@ -18,6 +18,10 @@ WEB API with info about food products (like energy, composition etc.) determined
 - AutoMapper
 - PostgreSQL
 
+## Tests 
+- Xunit
+- FluentAssertion
+
 ### Patterns
 - Clean Architecture
 - CQRS (Mediator)
