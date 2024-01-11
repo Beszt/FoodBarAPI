@@ -34,7 +34,7 @@ WEB API with info about food products (like energy, composition etc.) determined
 
     4.1. Set connection string to your PostgreSQL database instance. In example:
     ```
-    "Host=localhost;Database=CarWorkshop;Username=postgresql;Password=PASSWORD;"
+    "Host=localhost;Database=DATABASE;Username=USERNAME;Password=PASSWORD;"
     ```
     4.2. Set JWT auhtentication config. In example:
     ```
