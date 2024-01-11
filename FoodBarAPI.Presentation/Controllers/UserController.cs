@@ -26,7 +26,6 @@ public class UserController(IServiceProvider _servicesCollection, IMediator _med
         return StatusCode(201); // Created() gives 204 - Bug?
     }
 
-    [AllowAnonymous]
     [HttpGet("/user/{login}")]
     public async Task<IActionResult> Get(string login)
     {
