@@ -15,7 +15,7 @@ public class ProductEndpointTest
     private readonly string _productJson = "{\"barcode\":" + _productBarcode + ",\"name\":\"GO ON Protein Crisp (Cookies & Cream)\",\"description\":\"Cookies & Cream motherfucker\",\"image\":\"\",\"weight\":50,\"energy\":216,\"protein\":10,\"fat\":8,\"carbohydrates\":26.5,\"sugar\":null,\"salt\":null,\"fiber\":null}";
 
     [Fact, TestPriority(1)]
-    public async Task HttpGet_ShouldReturnUnauthorized()
+    public async Task HttpGet_ShouldReturnUnauthorizedForAnonymous()
     {
         await using var application = new WebApplicationFactory<Program>();
         using var client = application.CreateClient();
