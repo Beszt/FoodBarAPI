@@ -1,7 +1,7 @@
 using System.Net;
-using Microsoft.AspNetCore.Mvc.Testing;
 using FluentAssertions;
 using Xunit;
+using FoodBarAPI.Tests.Rest;
 
 namespace FoodBarAPI.Tests;
 
@@ -10,12 +10,14 @@ public class RootEndpointTest
     [Fact]
     public async Task HttpGet_ShouldReturnStatusCodeNotFound()
     {
-        await using var application = new WebApplicationFactory<Program>();
-        using var client = application.CreateClient();
+        HttpRequestMessage httpRequest = new()
+        {
+            Method = HttpMethod.Post,
+            RequestUri = new Uri("/")
+        };
 
-        var response = await client.GetAsync("/");
-        var statusCode = response.StatusCode;
+        var response = await Client.Send(httpRequest);
     
-        statusCode.Should().Be(HttpStatusCode.NotFound);
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 }

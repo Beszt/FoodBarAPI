@@ -7,21 +7,21 @@ namespace FoodBarAPI.Tests;
 
 public class LoginEndpointTest
 {
+    readonly string _bearerHeader = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
+
     [Fact]
     public async Task HttpPost_GetAdminToken()
     {
-        var token = TokenFactory.CreateToken(TokenType.Admin);
-        await token.Get();
+        var token = await TokenFactory.CreateToken(TokenType.Admin);
     
-        token.StatusCode.Should().Be(HttpStatusCode.OK);
+        token.Bearer.Should().Contain(_bearerHeader);
     }
 
     [Fact]
     public async Task HttpPost_GetUserToken()
     {
-        var token = TokenFactory.CreateToken(TokenType.User);
-        await token.Get();
+        var token = await TokenFactory.CreateToken(TokenType.User);
     
-        token.StatusCode.Should().Be(HttpStatusCode.OK);
+        token.Bearer.Should().Contain(_bearerHeader);
     }
 }

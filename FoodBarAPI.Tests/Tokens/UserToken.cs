@@ -2,8 +2,5 @@ namespace FoodBarAPI.Tests.Tokens;
 
 public class UserToken : Token
 {
-    public UserToken()
-    {
-        _jsonCredentials = "{\"login\": \"user\",\"password\": \"12345\"}";
-    }
+    public UserToken() : base("{\"login\": \"user\",\"password\": \"12345\"}") { }
 }

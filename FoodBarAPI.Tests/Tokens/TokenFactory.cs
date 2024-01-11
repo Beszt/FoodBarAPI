@@ -2,12 +2,12 @@ namespace FoodBarAPI.Tests.Tokens;
 
 public static class TokenFactory
 {
-    public static Token CreateToken(TokenType type)
+    public async static Task<Token> CreateToken(TokenType type)
     {
         return type switch
         {
-            TokenType.Admin => new AdminToken(),
-            TokenType.User => new UserToken(),
+            TokenType.Admin => await new AdminToken().InitializeAsync(),
+            TokenType.User => await new UserToken().InitializeAsync(),
             _ => throw new Exception($"Token type: {type} not exists")
         };
     }

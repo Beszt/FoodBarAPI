@@ -5,16 +5,13 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace FoodBarAPI.Tests.Tokens;
 
-public abstract class Token
+public abstract class Token(string _jsonCredentials)
 {
-    protected string _jsonCredentials = default!;
-    private string? _token = default;
+    public string? Bearer { get; private set; }
     
-    public HttpStatusCode StatusCode { get; protected set; } = default;
-
-    public async Task<string?> Get()
+    public async Task<Token> InitializeAsync()
     {
-        if (String.IsNullOrEmpty(_token))
+        if (String.IsNullOrEmpty(Bearer))
         {
             await using var application = new WebApplicationFactory<Program>();
             using var client = application.CreateClient();
@@ -28,11 +25,11 @@ public abstract class Token
             };
 
             var response = await client.SendAsync(httpRequest);
-            StatusCode = response.StatusCode;
-            if (StatusCode == HttpStatusCode.OK)
-                _token = await response.Content.ReadAsStringAsync();
+            var statusCode = response.StatusCode;
+            if (statusCode == HttpStatusCode.OK)
+                Bearer = await response.Content.ReadAsStringAsync();
         }
 
-        return _token;
+        return this;
     }
 }
