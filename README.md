@@ -4,7 +4,7 @@ WEB API with info about food products (like energy, composition etc.) determined
 ## Technology stack
 
 ### Backend
-- NET 8.0 (C# 12)
+- .NET 8.0 (C# 12)
 - ASP.NET Minimal API
 - JWT authentication
 - Roles authorization
