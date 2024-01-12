@@ -24,7 +24,7 @@ WEB API with info about food products (like energy, composition etc.) determined
 
 ### Patterns
 - Clean Architecture
-- CQRS (Mediator)
+- CQRS
 
 ## Quick Setup
 1. Install [PostgreSQL Server](https://www.postgresql.org/download/) and make new database.
