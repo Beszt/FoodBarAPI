@@ -1,4 +1,3 @@
-using System.Net;
 using FluentAssertions;
 using Xunit;
 using FoodBarAPI.Tests.Tokens;
