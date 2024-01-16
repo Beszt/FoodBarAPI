@@ -57,7 +57,6 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     Barcode = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    Image = table.Column<byte[]>(type: "bytea", nullable: true),
                     CreatedBy = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedBy = table.Column<int>(type: "integer", nullable: false),

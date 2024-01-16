@@ -5,7 +5,6 @@ public class ProductDto
     public long Barcode { get; set; } = default!;
     public string Name { get; set; } = default!;
     public string? Description { get; set; }
-    public byte[]? Image { get; set; }
     public int Weight { get; set; }
     public int Energy { get; set; }
     public double Protein { get; set; }

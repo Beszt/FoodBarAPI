@@ -42,9 +42,6 @@ namespace FoodBarAPI.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("bytea");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");

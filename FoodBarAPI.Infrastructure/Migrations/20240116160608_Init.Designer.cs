@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FoodBarAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(FoodBarDbContext))]
-    [Migration("20240102201236_Init")]
+    [Migration("20240116160608_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -44,9 +44,6 @@ namespace FoodBarAPI.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("bytea");
 
                     b.Property<string>("Name")
                         .IsRequired()

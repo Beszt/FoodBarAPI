@@ -34,7 +34,6 @@ public class ProductRepository(FoodBarDbContext _dbContext) : IProductRepository
         {
             prod.Name = product.Name;
             prod.Description = product.Description;
-            prod.Image = product.Image;
             prod.UpdatedAt = DateTime.UtcNow;
             prod.UpdatedBy = product.UpdatedBy;
 
