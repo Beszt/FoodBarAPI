@@ -19,7 +19,7 @@ public class LoginController(IMediator _mediator, JwtSettings _settings) : Contr
         if (login == null)
             return BadRequest("Incorrect data");
 
-        var jwt = await _mediator.Send(new LoginUserQuery
+        var jwt = await _mediator.Send(new LoginQuery
         {
             Login = login.Login,
             Password = login.Password,

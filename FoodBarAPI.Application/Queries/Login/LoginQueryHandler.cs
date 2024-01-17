@@ -9,9 +9,9 @@ using FoodBarAPI.Domain.Entities;
 
 namespace FoodBarAPI.Application.Queries;
 
-public class LoginUserQueryHandler(IUserRepository _userRepository) : IRequestHandler<LoginUserQuery, string?>
+public class LoginQueryHandler(IUserRepository _userRepository) : IRequestHandler<LoginQuery, string?>
 {
-    public async Task<string?> Handle(LoginUserQuery request, CancellationToken cancellationToken)
+    public async Task<string?> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.Get(request.Login);
         
