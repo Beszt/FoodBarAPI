@@ -15,12 +15,12 @@ Live demo is available here [FoodBarAPI](http://foodbarapi.obisoft.pl).
 - NLog
 - Swagger
 
-## Database 
+### Database 
 - Entity Framework
 - AutoMapper
 - PostgreSQL
 
-## Tests 
+### Tests 
 - Xunit
 - FluentAssertion
 
