@@ -3,11 +3,16 @@ using MediatR;
 using FoodBarAPI.Application.Dtos;
 using FoodBarAPI.Application.Queries;
 using FoodBarAPI.Presentation.Settings;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace FoodBarAPI.Presentation.Controllers;
 
+[SwaggerTag("")]
 public class LoginController(IMediator _mediator, JwtSettings _settings) : Controller
 {
+    [SwaggerOperation("Authentication request that produce JWT bearer")]
+    [SwaggerResponse(200, "Body with JWT bearer")]
+    [SwaggerResponse(400, "Incorrect body format or wrong credentials")]
     [HttpPost("/login")]
     public async Task<IActionResult> Login([FromBody] UserDto login)
     {

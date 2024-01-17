@@ -5,13 +5,17 @@ using MediatR;
 using FoodBarAPI.Application.Commands;
 using FoodBarAPI.Application.Queries;
 using FoodBarAPI.Application.Validators;
-using FoodBarAPI.Presentation.Settings;
+using Swashbuckle.AspNetCore.Annotations;
+using FoodBarAPI.Application.Dtos;
 
 namespace FoodBarAPI.Presentation.Controllers;
 
 [Authorize (Roles = "admin")]
 public class UserController(IServiceProvider _servicesCollection, IMediator _mediator) : Controller
 {
+    [SwaggerOperation("Create new user")]
+    [SwaggerResponse(201, "User created")]
+    [SwaggerResponse(400, "Bad Request with validations errors")]
     [HttpPost("/user")]
     public async Task<IActionResult> Create([FromBody] CreateUserCommand command)
     {
@@ -26,6 +30,9 @@ public class UserController(IServiceProvider _servicesCollection, IMediator _med
         return StatusCode(201); // Created() gives 204 - Bug?
     }
 
+    [SwaggerOperation("Get user determined by it's login")]
+    [SwaggerResponse(200, "JSON with user info")]
+    [SwaggerResponse(404, "User not found")]
     [HttpGet("/user/{login}")]
     public async Task<IActionResult> Get(string login)
     {
@@ -37,6 +44,9 @@ public class UserController(IServiceProvider _servicesCollection, IMediator _med
         return Ok(user);
     }
 
+    [SwaggerOperation("Edit exististing user")]
+    [SwaggerResponse(200, "User updated")]
+    [SwaggerResponse(400, "Bad Request with validations errors")]
     [HttpPut("/user")]
     public async Task<IActionResult> Update([FromBody] UpdateUserCommand command)
     {
@@ -51,6 +61,9 @@ public class UserController(IServiceProvider _servicesCollection, IMediator _med
         return Ok();
     }
 
+    [SwaggerOperation("Delete user determined it's login")]
+    [SwaggerResponse(200, "User deleted")]
+    [SwaggerResponse(400, "Bad Request with validations errors")]
     [HttpDelete("/user/{login}")]
     public async Task<IActionResult> Delete(string login)
     {
@@ -64,6 +77,6 @@ public class UserController(IServiceProvider _servicesCollection, IMediator _med
 
         await _mediator.Send(command);
 
-        return Ok(); // Created() gives 204 - Bug?
+        return Ok();
     }
 }
