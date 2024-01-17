@@ -14,7 +14,7 @@ public class LoginController(IMediator _mediator, JwtSettings _settings) : Contr
     [SwaggerResponse(200, "Body with JWT bearer")]
     [SwaggerResponse(400, "Incorrect body format or wrong credentials")]
     [HttpPost("/login")]
-    public async Task<IActionResult> Login([FromBody] UserDto login)
+    public async Task<IActionResult> Login([FromBody] LoginDto login)
     {
         if (login == null)
             return BadRequest("Incorrect data");
