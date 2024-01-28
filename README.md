@@ -28,6 +28,10 @@ Live demo is available here [FoodBarAPI](http://foodbarapi.obisoft.pl).
 - Clean Architecture
 - CQRS
 
+### DevOps
+- CI pipeline
+- Branch protection rules
+
 ## Quick Setup
 1. Install [PostgreSQL Server](https://www.postgresql.org/download/) and make new database.
 2. Install [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
