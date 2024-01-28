@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      Solution_Name: FoodBarAPI.sln
+      Test_Project_Path: FoodBarAPI.Tests\FoodBarAPI.Tests.csproj
+      Wap_Project_Directory: FoodBarAPI.Presentation
+      Wap_Project_Path: FoodBarAPI.Presentation\FoodBarAPI.Presentation.csproj
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Build
+      run: dotnet build -o ${{env.DOTNET_ROOT}}\FoodBarAPI
+
+    - name: Move secrets to appsettings.json 
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: '${{env.DOTNET_ROOT}}\FoodBarAPI\appsettings.json'
+      env:
+        ConnectionStrings.FoodBarAPI: ${{ secrets.FOODBARAPI_CONNECTION_STRING }}
+        Jwt:Key: ${{ secrets.FOODBARAPI_JWT_KEY }}
+        Jwt:ExpireInDays: 14
+        Jwt:Issuer: "http://localhost:5164"
+
+    - name: Test
+      run: dotnet test
