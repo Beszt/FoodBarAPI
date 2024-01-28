@@ -28,9 +28,9 @@ jobs:
         files: '/home/runner/work/FoodBarAPI/FoodBarAPI/FoodBarAPI.Presentation/appsettings.json'
       env:
         ConnectionStrings.FoodBarAPI: ${{ secrets.FOODBARAPI_CONNECTION_STRING }}
-        Jwt:Key: ${{ secrets.FOODBARAPI_JWT_KEY }}
-        Jwt:ExpireInDays: 14
-        Jwt:Issuer: "http://localhost:5164"
+        Jwt.Key: ${{ secrets.FOODBARAPI_JWT_KEY }}
+        Jwt.ExpireInDays: 14
+        Jwt.Issuer: "http://localhost:5164"
 
     - name: Test
       run: dotnet test
