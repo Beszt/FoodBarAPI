@@ -7,7 +7,7 @@ public class ProductSeeder(FoodBarDbContext _dbContext) : ISeeder
 {
     public async Task Seed()
     {
-        if (await _dbContext.Database.CanConnectAsync() && !_dbContext.Products.Any())
+        if (!_dbContext.Products.Any())
         {
             var products = new List<Product>
             {

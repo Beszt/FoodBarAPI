@@ -8,7 +8,7 @@ public class UserSeeder(FoodBarDbContext _dbContext) : ISeeder
 {
     public async Task Seed()
     {
-        if (await _dbContext.Database.CanConnectAsync() && !_dbContext.Roles.Any())
+        if (!_dbContext.Roles.Any())
         {
             var roles = new List<Role>
             {
