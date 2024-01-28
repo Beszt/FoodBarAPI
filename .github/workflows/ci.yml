@@ -9,13 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    env:
-      Solution_Name: FoodBarAPI.sln
-      Test_Project_Path: FoodBarAPI.Tests/FoodBarAPI.Tests.csproj
-      Wap_Project_Directory: FoodBarAPI.Presentation
-      Wap_Project_Path: FoodBarAPI.Presentation/FoodBarAPI.Presentation.csproj
-
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -31,7 +25,7 @@ jobs:
     - name: Move secrets to appsettings.json 
       uses: microsoft/variable-substitution@v1
       with:
-        files: 'FoodBarAPI/FoodBarAPI.Presentation/appsettings.json'
+        files: '/home/runner/work/FoodBarAPI/FoodBarAPI/FoodBarAPI.Presentation/appsettings.json'
       env:
         ConnectionStrings.FoodBarAPI: ${{ secrets.FOODBARAPI_CONNECTION_STRING }}
         Jwt:Key: ${{ secrets.FOODBARAPI_JWT_KEY }}
