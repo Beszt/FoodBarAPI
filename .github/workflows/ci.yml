@@ -25,10 +25,10 @@ jobs:
     - name: Move secrets to appsettings.json 
       uses: microsoft/variable-substitution@v1
       with:
-        files: '/home/runner/work/FoodBarAPI/FoodBarAPI/FoodBarAPI.Presentation/appsettings.json'
+        files: ${{ env.SETTINGS_PATH }}
       env:
-        ConnectionStrings.FoodBarAPI: ${{ secrets.FOODBARAPI_CONNECTION_STRING }}
-        Jwt.Key: ${{ secrets.FOODBARAPI_JWT_KEY }}
+        ConnectionStrings.FoodBarAPI: ${{ secrets.DEV_CONNECTION_STRING }}
+        Jwt.Key: ${{ secrets.DEV_JWT_KEY }}
         Jwt.ExpireInDays: 14
         Jwt.Issuer: "http://localhost:5164"
 
