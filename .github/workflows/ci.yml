@@ -31,7 +31,7 @@ jobs:
     - name: Move secrets to appsettings.json 
       uses: microsoft/variable-substitution@v1
       with:
-        files: '${{env.DOTNET_ROOT}}/appsettings.json'
+        files: 'FoodBarAPI/FoodBarAPI.Presentation/appsettings.json'
       env:
         ConnectionStrings.FoodBarAPI: ${{ secrets.FOODBARAPI_CONNECTION_STRING }}
         Jwt:Key: ${{ secrets.FOODBARAPI_JWT_KEY }}
