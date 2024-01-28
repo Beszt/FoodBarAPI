@@ -25,7 +25,7 @@ jobs:
     - name: Move secrets to appsettings.json 
       uses: microsoft/variable-substitution@v1
       with:
-        files: '${{ env.SETTINGS_PATH }}'
+        files: ${{ env.GITHUB_ACTION_PATH }}
       env:
         ConnectionStrings.FoodBarAPI: ${{ secrets.DEV_CONNECTION_STRING }}
         Jwt.Key: ${{ secrets.DEV_JWT_KEY }}
