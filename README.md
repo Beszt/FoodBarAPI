@@ -56,7 +56,7 @@ Live demo is available here [FoodBarAPI](http://foodbarapi.obisoft.pl).
 ## Quick Setup (Docker)
 1. Install [PostgreSQL Server](https://www.postgresql.org/download/) and make new database.
 2. Pull [Docker image](https://hub.docker.com/r/beszt/foodbarapi)
-3. Run image with the following enviroment variables and change it values. In example:
+3. Run image with the following environment variables and change them values. In example:
 
 ```
 ConnectionStrings__FoodBarAPI: Host=localhost;Database=DATABASE;Username=USERNAME;Password=PASSWORD;
