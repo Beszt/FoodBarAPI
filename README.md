@@ -56,11 +56,11 @@ Live demo is available here [FoodBarAPI](http://foodbarapi.obisoft.pl).
 ## Quick Setup (Docker)
 1. Install [PostgreSQL Server](https://www.postgresql.org/download/) and make new database.
 2. Pull [Docker image](https://hub.docker.com/r/beszt/foodbarapi)
-3. Run image with the following enviroment variables
+3. Run image with the following enviroment variables and change it values. In example:
 
 ```
 ConnectionStrings__FoodBarAPI: Host=localhost;Database=DATABASE;Username=USERNAME;Password=PASSWORD;
 Jwt__Key: YOUR VERY HIDDEN SERCET PHARSE
-Jwt__ExpireInDays: Duration of token in days (integer value)
+Jwt__ExpireInDays: 14
 Jwt__Issuer: https://yourhost.com
 ```
