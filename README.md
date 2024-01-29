@@ -29,8 +29,9 @@ Live demo is available here [FoodBarAPI](http://foodbarapi.obisoft.pl).
 - CQRS
 
 ### DevOps
-- CI pipeline
+- CI/CD pipelines
 - Branch protection rules
+- Docker support
 
 ## Quick Setup
 1. Install [PostgreSQL Server](https://www.postgresql.org/download/) and make new database.
