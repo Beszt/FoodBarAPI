@@ -29,8 +29,9 @@ Live demo is available here [FoodBarAPI](http://foodbarapi.obisoft.pl).
 - CQRS
 
 ### DevOps
-- CI pipeline
+- CI/CD pipelines
 - Branch protection rules
+- Docker support
 
 ## Quick Setup
 1. Install [PostgreSQL Server](https://www.postgresql.org/download/) and make new database.
@@ -46,8 +47,20 @@ Live demo is available here [FoodBarAPI](http://foodbarapi.obisoft.pl).
     ```
     "Key": "YOUR VERY HIDDEN SERCET PHARSE",",
     "ExpireInDays": 14,
-    "Issuer": "http://localhost:5569"
+    "Issuer": "https://yourhost.com"
     ```
 
 5. Change `nlog.config.example` to `nlog.config`. Optionally, if you want logging with email just replace smtp credentuals with yours and uncomment email logger.
 6. Type `dotnet run`
+
+## Quick Setup (Docker)
+1. Install [PostgreSQL Server](https://www.postgresql.org/download/) and make new database.
+2. Pull [Docker image](https://hub.docker.com/r/beszt/foodbarapi)
+3. Run image with the following enviroment variables
+
+```
+ConnectionStrings__FoodBarAPI: Host=localhost;Database=DATABASE;Username=USERNAME;Password=PASSWORD;
+Jwt__Key: YOUR VERY HIDDEN SERCET PHARSE
+Jwt__ExpireInDays: Duration of token in days (integer value)
+Jwt__Issuer: https://yourhost.com
+```
