@@ -29,7 +29,7 @@ jobs:
       env:
         ConnectionStrings.FoodBarAPI: ${{ secrets.DEV_CONNECTION_STRING }}
         Jwt.Key: ${{ secrets.DEV_JWT_KEY }}
-        Jwt.ExpireInDays: ${{ vars.JWT_EXPIRE_IN_DAYS }}
+        Jwt.ExpireInDays: ${{ vars.DEV_JWT_EXPIRE_IN_DAYS }}
         Jwt.Issuer: ${{ vars.DEV_JWT_ISSUER }}
 
     - name: Test
